@@ -17,7 +17,7 @@
                                 </tr>
                             </thead>
                             <tbody style="height: 500px; overflow: auto;">
-                                <tr *ngFor="let row of rowData | async" >
+                                <tr *ngFor="let row of rowData | async">
                                     <td style="color:#44c5ac">{{row.action}}</td>
                                     <td>{{row.duration}}</td>
                                     <td style="color: #3f8e19; font-size: 10pt;">{{row.name}}</td>
@@ -38,6 +38,7 @@
                         border-radius: 5px;">
                         <h4 class="title" style="color: #fff">Company Stock Prices</h4>
                         <p class="category" style="color: #fff">Current Round: {{currentRound}}</p>
+                        <p *ngIf="userBalance | async; let userBalance" class="category" style="color: #fff">account balance: {{userBalance.balace}}</p>
                     </div>
                     <div *ngIf="rowData2" class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -47,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody style="height: 500px; overflow: auto;">
-                                <tr *ngFor="let row of tableData2.dataRows">
+                                <tr *ngFor="let row of rowData2">
                                     <td>{{row.company}}</td>
                                     <td>{{row.sector}}</td>
                                     <td style="color: #F94C4C; font-size: 14pt;">{{row.price}}</td>
@@ -78,17 +79,16 @@
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th *ngFor="let cell of tableData2.headerRow" style="font-weight: bold;color: #484848;font-size: 10pt;">{{ cell }}</th>
+                                    <th *ngFor="let cell of tableData3.headerRow" style="font-weight: bold;color: #484848;font-size: 10pt;">{{ cell }}</th>
                                 </tr>
                             </thead>
                             <tbody style="height: 500px; overflow: auto;">
                                 <tr *ngFor="let row of portfolio | async">
                                     <td>{{row.stock}}</td>
-                                    <td>{{row.type}}</td>
-                                    <td>{{row.price}}</td>
                                     <td>{{row.quantity}}</td>
-
-                                    <td><button (click)="buyShare(row.price, row.company)" class="btn btn-danger btn-xs">Sell</button></td>
+                                    <td>
+                                        <button (click)="sellShare(row.price, row.stock)" class="btn btn-danger btn-xs">Sell</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

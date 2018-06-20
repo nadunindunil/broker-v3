@@ -17,7 +17,6 @@ import {UserComponent} from './views/user/user.component';
 import {TablesComponent} from './views/tables/tables.component';
 import {TypographyComponent} from './views/typography/typography.component';
 import {IconsComponent} from './icons/icons.component';
-import {MapsComponent} from './views/maps/maps.component';
 import {NotificationsComponent} from './views/notifications/notifications.component';
 import {UpgradeComponent} from './views/upgrade/upgrade.component';
 import {JoinComponent} from './views/join/join.component';
@@ -26,7 +25,10 @@ import {JoinServiceService} from './services/join-service.service';
 import {JoinedDetailServiceService} from './services/joined-detail-service.service';
 import {AnalystServiceService} from './services/analyst-service.service';
 import {TransactionsServiceService} from './services/transactions-service.service';
-import { BrokerServiceService } from './services/broker-service.service';
+import {BrokerServiceService} from './services/broker-service.service';
+import {SimulatorServiceService} from './services/simulator-service.service'
+import {GameServiceService} from './services/game-service.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,6 @@ import { BrokerServiceService } from './services/broker-service.service';
     TablesComponent,
     TypographyComponent,
     IconsComponent,
-    MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
     JoinComponent,
@@ -53,7 +54,15 @@ import { BrokerServiceService } from './services/broker-service.service';
     AppRoutingModule,
     LbdModule
   ],
-  providers: [JoinServiceService, JoinedDetailServiceService,AnalystServiceService,TransactionsServiceService,BrokerServiceService],
+  providers: [
+    JoinServiceService, 
+    JoinedDetailServiceService,
+    AnalystServiceService,
+    TransactionsServiceService,
+    BrokerServiceService,
+    SimulatorServiceService,
+    GameServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
