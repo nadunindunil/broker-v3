@@ -49,5 +49,6 @@ export class JoinedDetailServiceService {
   public clearUserData(): void {
     localStorage.setItem('users', JSON.stringify(null));
     localStorage.setItem('currentUser', JSON.stringify(null));
+    localStorage.setItem('userData', JSON.stringify({ isLoggedIn: false }));
   }
 }

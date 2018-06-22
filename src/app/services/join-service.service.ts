@@ -4,7 +4,7 @@ import {Headers} from '@angular/http';
 import {Router, ActivatedRoute} from '@angular/router';
 import {JoinedDetailServiceService} from './joined-detail-service.service'
 import { User } from '../models/user';
-import { Subscription } from 'rxjs';
+import { Subscription,Observable } from 'rxjs';
 
 @Injectable()
 export class JoinServiceService {
@@ -65,7 +65,7 @@ export class JoinServiceService {
 
   }
 
-  public loggin(name : string): Subscription
+  public loggin(name : string): Observable<any>
   {
     return this
       .http
@@ -74,7 +74,7 @@ export class JoinServiceService {
       }, {
         headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'})
       })
-      .subscribe(response => {
+      .map(response => {
         const decodedBankAccount : any = response.json();
         console.log('create join', decodedBankAccount);
         if (decodedBankAccount.Name === name) {

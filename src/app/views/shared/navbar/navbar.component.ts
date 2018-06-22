@@ -106,7 +106,6 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.joinService.endGame();
-    localStorage.setItem('userData', JSON.stringify({ isLoggedIn: false }));
 
     this.joinedDetailServiceService.clearUserData();
 
